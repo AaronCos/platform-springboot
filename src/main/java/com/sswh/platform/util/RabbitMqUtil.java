@@ -16,7 +16,7 @@ public class RabbitMqUtil {
         //1.创建连接工厂对象
         factory=new ConnectionFactory();
         //设置连接对象的参数
-        factory.setHost("192.168.117.130");
+        factory.setHost("192.168.117.133");
         factory.setPort(15672);
         factory.setUsername("guest");
         factory.setPassword("guest");

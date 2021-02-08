@@ -1,10 +1,10 @@
 spring:
   ### mq的配置
-  rabbitmq:
-    host: 192.168.117.133
-    port: 5672
-    username: guest
-    password: guest
+#  rabbitmq:
+#    host: 192.168.117.133
+#    port: 5672
+#    username: guest
+#    password: guest
   # virtual-host: /virtual1
   # password: "secret"
   # 数据库配置
@@ -31,6 +31,26 @@ spring:
       # 数据库连接超时时间,默认30秒，即30000
       connection-timeout: 30000
       connection-test-query: SELECT 1
+  redis:
+    database: 1
+    port: 6379
+    host: 192.168.117.133
+    password:
+    timeout: 1s
+#    lettuce:
+#      pool:
+#        max-active: 8
+#        max-idle: 8
+#        min-idle: 0
+#        max-wait: -1ms
+
+  session:
+    store-type: redis
+    redis:
+      flush-mode: on_save
+      #添加后，redis中的key为spring:session:myproject
+      namespace: sswh.login
+
 mybatis-plus:
   check-config-location: false
   configuration:
@@ -38,4 +58,5 @@ mybatis-plus:
   type-aliases-package: com.sswh.platform.entity.po
 server:
   port: 8082
+
 
