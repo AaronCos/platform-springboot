@@ -19,6 +19,11 @@ public class Result<T> {
         this.message = errorCode.getDesc();
     }
 
+    private Result(String code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+
     private Result(ErrorCode errorCode, T data) {
         this.code = errorCode.getCode();
         this.message = errorCode.getDesc();
@@ -27,6 +32,10 @@ public class Result<T> {
 
     public static Result error(ErrorCode errorCode) {
         return new Result(errorCode);
+    }
+
+    public static Result error(String code,String message) {
+        return new Result(code, message);
     }
 
     public static<T> Result<T> ok(T t) {
