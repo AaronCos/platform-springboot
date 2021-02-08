@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.Calendar;
 
 @RestController
@@ -15,7 +16,8 @@ public class OprDataBaseController {
     UserService userService;
 
     @RequestMapping("hello")
-    public String addOne(){
+    public String addOne(HttpSession session){
+        session.setAttribute("name","wangchengcheng");
         User user = new User();
         user.setUsername("wangyuzhi");
         user.setBirthday(Calendar.getInstance().getTime());
