@@ -1,6 +1,7 @@
 package com.sswh.platform.config;
 
 
+import com.sswh.platform.common.exception.BusinessException;
 import com.sswh.platform.entity.dto.Result;
 import com.sswh.platform.enums.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
@@ -13,9 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class GlobalControllerAdvice {
 
     @ResponseBody
-    @ExceptionHandler(RuntimeException.class)
-    public Result exception(RuntimeException e) {
-        return Result.error(ErrorCode.SYS_ERROR);
+    @ExceptionHandler(BusinessException.class)
+    public Result exception(BusinessException e) {
+        return Result.error(e.getCode(), e.getMessage());
     }
 
     @ResponseBody
