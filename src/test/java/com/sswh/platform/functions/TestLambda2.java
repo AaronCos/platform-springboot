@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -113,6 +114,34 @@ public class TestLambda2 {
             System.out.println(add.toString());
         }
         System.out.println(num.toString());
+    }
+
+    @Test
+    public void test10() {
+        employees.stream().forEach(System.out::println);
+        List<String> collect = employees.stream().map(Employee::getName).map(x->x+"gggg").map(y->y+"yyy").filter(z -> !z.startsWith("张三")).map(k -> k + "hello").map(String::valueOf).collect(Collectors.toList());
+        collect.forEach(this::addOne);
+
+    }
+
+    public void addOne(String abc){
+
+    }
+
+    @Test
+    public void count() {
+        List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5, 6);
+        List<Integer> integers1 = Arrays.asList(1, 3, 45, 6, 8, 6);
+        List<Integer> resultList = new ArrayList<>();
+        for (int i = 0; i < integers.size(); i++) {
+            Integer result = integers.get(i)-integers1.get(i);
+            resultList.add(result);
+
+        }
+        resultList.stream().forEach(System.out::println);
+
+
+
     }
 
 }

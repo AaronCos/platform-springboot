@@ -1,13 +1,19 @@
 package com.sswh.platform.functions;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.sswh.platform.functions.entity.Employee;
 import com.sswh.platform.functions.service.FilterEmployee;
+import com.sswh.platform.functions.service.MyFun;
+import com.sswh.platform.functions.service.UseFun;
 import com.sswh.platform.functions.service.impl.FilterEmployeeByAge;
 import com.sswh.platform.functions.service.impl.FilterEmployeeBySalary;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
+import java.text.MessageFormat;
 import java.util.*;
+import java.util.function.BiPredicate;
+import java.util.stream.Collectors;
 
 public class LambdaTest {
 
@@ -34,11 +40,11 @@ public class LambdaTest {
     }
 
     List<Employee> employees = Arrays.asList(
-            new Employee("张三", 25, 5555.55),
-            new Employee("李四", 35, 6666.55),
-            new Employee("王五", 45, 7777.55),
-            new Employee("赵六", 55, 8888.55),
-            new Employee("田七", 69, 9999.55)
+            new Employee("A", 25, 5555.55),
+            new Employee("D", 35, 6666.55),
+            new Employee("B", 35, 7777.55),
+            new Employee("E", 55, 8888.55),
+            new Employee("C", 69, 9999.55)
     );
 
     // 获取当前公司中年龄大于35的员工
@@ -131,6 +137,69 @@ public class LambdaTest {
         filterEmployee(employees, (e) -> e.getAge()>0);
     }
 
+    @Test
+    public void test9() {
+        helloMyFun(x -> x, 5);
+    }
+
+    public void helloMyFun(MyFun myFun, Integer num){
+        Integer value = myFun.getValue(num);
+        System.out.println(value);
+    }
+
+    @org.junit.Test
+    public void test10() {
+       BiPredicate<Employee, Integer> biPredicate = (x,y) -> Integer.compare(x.getAge(),y)>0;
+        BiPredicate<Employee, Integer> biPredicate1 = (x,y) -> Integer.compare(x.getAge(),y)>0;
+    }
+
+    public void useFun(UseFun fun, Integer num){
 
 
+    }
+
+    @Test
+    public void test() {
+        JSONObject jo = new JSONObject();
+        jo.put("cid", "21e1221321312");
+        jo.put("injectContent", "gggg");
+        System.out.println(jo);
+    }
+
+    @Test
+    public void test11(){
+        List<String> collect = employees.stream().filter(x -> x.getAge()>35).map(Employee::getName).map(x->x+"gg").collect(Collectors.toList());
+        System.out.println(collect);
+    }
+
+
+    @Test
+    public void test12() {
+        List<Employee> collect = employees.stream().sorted(Comparator.comparing(Employee::getName).thenComparing(Employee::getSalary, (s1,s2) -> {
+           return s2.compareTo(s1);
+        })).collect(Collectors.toList());
+        collect.stream().forEach(System.out::println);
+    }
+
+    @Test
+    public void test13() {
+        BiPredicate<Integer,Integer> bi = (x, y) -> x>y;
+        boolean test = bi.test(5, 4);
+        System.out.println(test);
+        //Assert.assertTrue(test);
+    }
+
+    /**
+     * MessageFormat
+     */
+    @Test
+    public void test14() {
+        String good = MessageFormat.format("[{1}]", 5,"fafda");
+        System.out.println(good);
+    }
+
+    @Test
+    public void test15() {
+        System.out.println();
+    }
 }
