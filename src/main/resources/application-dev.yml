@@ -1,10 +1,10 @@
 spring:
   ### mq的配置
-#  rabbitmq:
-#    host: 192.168.117.133
-#    port: 5672
-#    username: guest
-#    password: guest
+  #  rabbitmq:
+  #    host: 192.168.117.133
+  #    port: 5672
+  #    username: guest
+  #    password: guest
   # virtual-host: /virtual1
   # password: "secret"
   # 数据库配置
@@ -14,8 +14,8 @@ spring:
     username: root
     password: root
     type: com.zaxxer.hikari.HikariDataSource
-  # Hikari 连接池配置
-  # 最小空闲连接数量
+    # Hikari 连接池配置
+    # 最小空闲连接数量
     hikari:
       minimum-idle: 5
       # 空闲连接存活最大时间，默认600000（10分钟）
@@ -34,15 +34,17 @@ spring:
   redis:
     database: 1
     port: 6379
-    host: 192.168.117.133
+    host: 192.168.117.142
     password:
     timeout: 1s
-#    lettuce:
-#      pool:
-#        max-active: 8
-#        max-idle: 8
-#        min-idle: 0
-#        max-wait: -1ms
+
+
+  #    lettuce:
+  #      pool:
+  #        max-active: 8
+  #        max-idle: 8
+  #        min-idle: 0
+  #        max-wait: -1ms
 
   session:
     store-type: redis

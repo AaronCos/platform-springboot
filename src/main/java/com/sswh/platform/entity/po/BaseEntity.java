@@ -10,8 +10,9 @@ import java.util.Date;
 public class BaseEntity {
 
     @TableId(type = IdType.ASSIGN_UUID)
-    private String id;
-    private Date createTime;
-    private Date updateTime;
+    private String iid;
+    private Date createtime;
+    private Date updatetime;
     private String creator;
+    private String updater;
 }

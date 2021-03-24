@@ -2,9 +2,8 @@ package com.sswh.platform.functions.service.impl;
 
 import com.sswh.platform.functions.entity.Employee;
 import com.sswh.platform.functions.service.FilterEmployee;
+import com.sswh.platform.service.MyPredict;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class FilterEmployeeByAge implements FilterEmployee<Employee> {
 
@@ -12,4 +11,10 @@ public class FilterEmployeeByAge implements FilterEmployee<Employee> {
     public boolean filterEmployee(Employee employee) {
         return false;
     }
+
+    public void test11(MyPredict<Employee> emp) {
+
+    }
+
+
 }
