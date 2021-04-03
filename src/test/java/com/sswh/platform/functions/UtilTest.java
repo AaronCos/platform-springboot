@@ -2,14 +2,20 @@ package com.sswh.platform.functions;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 public class UtilTest {
 
     @Test
     public void test(){
-        String a = "15";
-        String concat = a.concat("%");
+        Double d = 12312.52131231;
+        long round = Math.round(d);
+        System.out.println(d.toString());
 
     }
 
@@ -28,5 +34,14 @@ public class UtilTest {
         if (json.isEmpty()) {
             System.out.println(json.toJSONString());
         }
+    }
+
+    @Test
+    public void test3() {
+        String ab = "c:e:g";
+        String hello = "k";
+        String join = Joiner.on("+").skipNulls().join(ab, hello);
+        System.out.println(join);
+        //Assert.assertEquals(join, "c:d");
     }
 }
